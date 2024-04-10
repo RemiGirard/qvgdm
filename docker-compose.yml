@@ -1,0 +1,10 @@
+version: '3.0'
+services:
+  app:
+    build: ./app
+    volumes:
+      - ./app:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "8081:8081"
