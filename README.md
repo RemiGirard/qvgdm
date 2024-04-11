@@ -11,7 +11,7 @@ This is a mobile app to play a question game.
 
 get code
 
-        git clone ***
+    git clone ***
 
 build image
 
@@ -23,7 +23,7 @@ build container without volume binding
 
 copy node_modules folder from container to local folder
 
-    docker compose cp app:/app/node_modules/ ./app/
+    docker compose cp app:/app/node_modules/ ./app/node_modules/
 
 ## Usage
 
