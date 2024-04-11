@@ -1,11 +1,21 @@
-FROM node:20.12.1
-
-EXPOSE 8081
-
-COPY . /app/
+FROM node:20.12.1 AS buildNodeModules
 
 WORKDIR /app/
 
-RUN npm install
+COPY package.json .
+COPY package-lock.json .
 
+RUN npm install --frozen-lockfile
+
+FROM node:20.12.1
+
+WORKDIR /app/
+
+COPY . .
+
+COPY --from=buildNodeModules /app/node_modules ./node_modules
+
+#ENTRYPOINT ["ls"]
 ENTRYPOINT ["npx", "expo"]
+
+EXPOSE 8081
